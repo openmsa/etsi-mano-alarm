@@ -2,9 +2,10 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.ubiqube.mano</groupId>
-		<artifactId>mano-build</artifactId>
+		<artifactId>mano-super-pom</artifactId>
 		<version>3.0.0-SNAPSHOT</version>
 	</parent>
+	<groupId>com.ubiqube.mano.alarm</groupId>
 	<artifactId>mano-alarm</artifactId>
 	<packaging>pom</packaging>
 	<modules>
@@ -13,4 +14,13 @@
 		<module>alarm-webapp</module>
 		<module>alarm-core</module>
 	</modules>
+	<scm>
+		<developerConnection>scm:git:https://github.com/openmsa/etsi-mano-alarm.git</developerConnection>
+	</scm>
+	<properties>
+		<version.mano-mon-api>3.0.0</version.mano-mon-api>
+		<version.mano-mon-webapp-client>3.0.0</version.mano-mon-webapp-client>
+		<version.mano-condition>3.0.0</version.mano-condition>
+		<version.mano-fluxrest>3.0.0</version.mano-fluxrest>
+	</properties>
 </project>

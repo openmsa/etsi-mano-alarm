@@ -60,12 +60,12 @@
 				<version>5.0.0</version>
 		</dependency>
 		<dependency>
-			<groupId>com.ubiqube.mano</groupId>
+			<groupId>com.ubiqube.mano.alarm</groupId>
 			<artifactId>alarm-api</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.ubiqube.mano</groupId>
+			<groupId>com.ubiqube.mano.alarm</groupId>
 			<artifactId>alarm-core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
