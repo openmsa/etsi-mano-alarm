@@ -23,13 +23,13 @@ import org.springframework.stereotype.Service;
 
 import com.ubiqube.etsi.mano.alarm.entities.AlarmSubscription;
 import com.ubiqube.etsi.mano.alarm.entities.alarm.Alarm;
+import com.ubiqube.etsi.mano.service.auth.model.AuthParamBasic;
+import com.ubiqube.etsi.mano.service.auth.model.AuthParamOauth2;
+import com.ubiqube.etsi.mano.service.auth.model.AuthType;
+import com.ubiqube.etsi.mano.service.auth.model.AuthentificationInformations;
+import com.ubiqube.etsi.mano.service.auth.model.OAuth2GrantType;
+import com.ubiqube.etsi.mano.service.auth.model.ServerConnection;
 import com.ubiqube.etsi.mano.service.rest.FluxRest;
-import com.ubiqube.etsi.mano.service.rest.model.AuthParamBasic;
-import com.ubiqube.etsi.mano.service.rest.model.AuthParamOauth2;
-import com.ubiqube.etsi.mano.service.rest.model.AuthType;
-import com.ubiqube.etsi.mano.service.rest.model.AuthentificationInformations;
-import com.ubiqube.etsi.mano.service.rest.model.OAuth2GrantType;
-import com.ubiqube.etsi.mano.service.rest.model.ServerConnection;
 
 import jakarta.annotation.Nullable;
 
