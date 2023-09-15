@@ -10,9 +10,8 @@ management:
   elastic:
     metrics:
       export:
-        auto-create-index: true
         host: http://mano-es:9200
-        index: mano-alarm-metrics
+        index: mano-metrics-alarm
   endpoint:
     health:
       show-details: ALWAYS
