@@ -22,6 +22,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlMatching;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.net.URI;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -49,7 +50,7 @@ class ActionServiceTest {
 		final ActionService srv = create();
 		final Alarm alarm = new Alarm();
 		final AlarmSubscription subs = new AlarmSubscription();
-		subs.setCallbackUri(wmRuntimeInfo.getHttpBaseUrl());
+		subs.setCallbackUri(URI.create(wmRuntimeInfo.getHttpBaseUrl()));
 		final AuthentificationInformations auth = new AuthentificationInformations();
 		auth.setAuthType(List.of(AuthType.BASIC));
 		subs.setAuthentication(auth);
@@ -64,7 +65,7 @@ class ActionServiceTest {
 		final ActionService srv = create();
 		final Alarm alarm = new Alarm();
 		final AlarmSubscription subs = new AlarmSubscription();
-		subs.setCallbackUri(wmRuntimeInfo.getHttpBaseUrl());
+		subs.setCallbackUri(URI.create(wmRuntimeInfo.getHttpBaseUrl()));
 		final AuthentificationInformations auth = new AuthentificationInformations();
 		auth.setAuthType(List.of(AuthType.BASIC));
 		final AuthParamBasic basic = new AuthParamBasic();
@@ -96,12 +97,12 @@ class ActionServiceTest {
 		final ActionService srv = create();
 		final Alarm alarm = new Alarm();
 		final AlarmSubscription subs = new AlarmSubscription();
-		subs.setCallbackUri(wmRuntimeInfo.getHttpBaseUrl());
+		subs.setCallbackUri(URI.create(wmRuntimeInfo.getHttpBaseUrl()));
 		final AuthentificationInformations auth = new AuthentificationInformations();
 		auth.setAuthType(List.of(AuthType.BASIC));
 		final AuthParamOauth2 oauth2 = new AuthParamOauth2();
 		oauth2.setGrantType(OAuth2GrantType.CLIENT_CREDENTIAL);
-		oauth2.setTokenEndpoint(wmRuntimeInfo.getHttpBaseUrl() + "/auth");
+		oauth2.setTokenEndpoint(URI.create(wmRuntimeInfo.getHttpBaseUrl() + "/auth"));
 		oauth2.setClientId("client");
 		oauth2.setClientSecret("secret");
 		auth.setAuthParamOauth2(oauth2);

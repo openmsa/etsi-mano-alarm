@@ -50,7 +50,7 @@ public class ActionService {
 				.url(subs.getCallbackUri())
 				.build();
 		final FluxRest fr = new FluxRest(server);
-		final URI uri = URI.create(alarm.getSubscription().getCallbackUri());
+		final URI uri = alarm.getSubscription().getCallbackUri();
 		fr.post(uri, alarm, Alarm.class, null);
 	}
 
