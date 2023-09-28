@@ -116,7 +116,7 @@ public class AlarmController {
 	private static AlarmSubscription map(final SubscriptionDto subscription) {
 		final AlarmSubscription s = new AlarmSubscription();
 		s.setAuthentication(subscription.getAuthentication());
-		s.setCallbackUri(subscription.getCallbackUri().toString());
+		s.setCallbackUri(subscription.getCallbackUri());
 		s.setRemoteId(subscription.getRemoteId());
 		return s;
 	}

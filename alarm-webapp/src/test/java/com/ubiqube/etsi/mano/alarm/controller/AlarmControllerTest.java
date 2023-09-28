@@ -45,7 +45,7 @@ class AlarmControllerTest {
 		final AlarmController srv = new AlarmController(alarmService);
 		final AlarmDto alarm = new AlarmDto();
 		final SubscriptionDto subs = new SubscriptionDto();
-		subs.setCallbackUri(URI.create("http://localhost/").toURL());
+		subs.setCallbackUri(URI.create("http://localhost/"));
 		alarm.setSubscription(subs);
 		srv.createAlarm(alarm);
 		assertTrue(true);
