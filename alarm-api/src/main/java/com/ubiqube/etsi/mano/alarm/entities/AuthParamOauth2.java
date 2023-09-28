@@ -16,6 +16,8 @@
  */
 package com.ubiqube.etsi.mano.alarm.entities;
 
+import java.net.URI;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.EnumType;
@@ -36,7 +38,7 @@ public class AuthParamOauth2 {
 	private String clientId;
 	private String clientSecret;
 	@NotNull
-	private String tokenEndpoint;
+	private URI tokenEndpoint;
 	private String o2Username;
 	private String o2Password;
 	private Boolean o2IgnoreSsl;

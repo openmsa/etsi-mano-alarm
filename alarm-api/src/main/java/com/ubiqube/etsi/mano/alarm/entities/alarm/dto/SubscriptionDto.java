@@ -16,7 +16,7 @@
  */
 package com.ubiqube.etsi.mano.alarm.entities.alarm.dto;
 
-import java.net.URL;
+import java.net.URI;
 
 import com.ubiqube.etsi.mano.alarm.entities.AuthentificationInformations;
 
@@ -39,7 +39,7 @@ public class SubscriptionDto {
 
 	@Schema(description = "Callback URL when alarm is triggered.")
 	@NotNull
-	private URL callbackUri;
+	private URI callbackUri;
 
 	@Schema(description = "External reference, used for tracking alarm triggering.")
 	private String remoteId;
