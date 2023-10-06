@@ -7,6 +7,7 @@
 		<relativePath />
 	</parent>
 	<artifactId>alarm-webapp</artifactId>
+  <version>3.2.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<dependencies>
 		<dependency>
@@ -112,8 +113,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-  <scm>
-    <tag>mano-alarm-3.2.0</tag>
-  </scm>
 </project>
