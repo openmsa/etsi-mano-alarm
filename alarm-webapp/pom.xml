@@ -3,11 +3,10 @@
 	<parent>
 		<groupId>com.ubiqube.mano</groupId>
 		<artifactId>mano-super-webapp</artifactId>
-		<version>3.2.0</version>
+		<version>3.2.2-SNAPSHOT</version>
 		<relativePath />
 	</parent>
 	<artifactId>alarm-webapp</artifactId>
-  <version>3.2.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<dependencies>
 		<dependency>
@@ -73,7 +72,7 @@
 		<dependency>
 			<groupId>com.ubiqube.mano.service.mon</groupId>
 			<artifactId>mano-mon-webapp-client</artifactId>
-			<version>${version.mano-mon-webapp-client}</version>
+			<version>${version.mano-mon-api}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
