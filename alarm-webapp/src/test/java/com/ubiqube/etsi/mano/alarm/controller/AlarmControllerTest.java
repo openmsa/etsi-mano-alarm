@@ -20,7 +20,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
-import java.net.MalformedURLException;
 import java.net.URI;
 import java.util.Optional;
 import java.util.UUID;
@@ -41,7 +40,7 @@ class AlarmControllerTest {
 	private AlarmService alarmService;
 
 	@Test
-	void testCreateAlarm() throws MalformedURLException {
+	void testCreateAlarm() {
 		final AlarmController srv = new AlarmController(alarmService);
 		final AlarmDto alarm = new AlarmDto();
 		final SubscriptionDto subs = new SubscriptionDto();
