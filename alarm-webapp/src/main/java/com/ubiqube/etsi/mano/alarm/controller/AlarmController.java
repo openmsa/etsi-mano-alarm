@@ -38,7 +38,7 @@ import com.ubiqube.etsi.mano.alarm.entities.alarm.dto.SubscriptionDto;
 import com.ubiqube.etsi.mano.alarm.service.AlarmService;
 
 import io.swagger.v3.oas.annotations.Operation;
-import jakarta.annotation.Nonnull;
+import org.jspecify.annotations.NonNull;
 import jakarta.validation.Valid;
 
 /**
@@ -65,7 +65,7 @@ public class AlarmController {
 
 	@Operation(summary = "Get a unique alarm.", description = "Get a unique alarm.", tags = {})
 	@GetMapping("/{id}")
-	public ResponseEntity<Alarm> findById(final @Nonnull @PathVariable("id") UUID id) {
+	public ResponseEntity<Alarm> findById(final @NonNull @PathVariable("id") UUID id) {
 		final Optional<Alarm> res = alarmService.findById(id);
 		if (res.isEmpty()) {
 			return ResponseEntity.notFound().build();
@@ -83,26 +83,26 @@ public class AlarmController {
 
 	@Operation(summary = "Delete an alarm.", description = "Delete an alarm.", tags = {})
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> deleteAlaram(final @Nonnull @PathVariable("id") UUID id) {
+	public ResponseEntity<Void> deleteAlaram(final @NonNull @PathVariable("id") UUID id) {
 		alarmService.deleteById(id);
 		return ResponseEntity.noContent().build();
 	}
 
 	@Operation(summary = "Add an element into an existing alarm.", description = "Add element alarm.", tags = {})
 	@PostMapping("/{id}/element")
-	public ResponseEntity<Void> addElementAlaram(final @Nonnull @PathVariable("id") UUID id, @Nonnull @RequestBody final AlarmElement alarmElement) {
+	public ResponseEntity<Void> addElementAlaram(final @NonNull @PathVariable("id") UUID id, @NonNull @RequestBody final AlarmElement alarmElement) {
 		alarmService.addElement(id, alarmElement);
 		return ResponseEntity.noContent().build();
 	}
 
 	@Operation(summary = "Remove an element into an existing alarm.", description = "Remove element alarm.", tags = {})
 	@DeleteMapping("/{id}/element/{name}")
-	public ResponseEntity<Void> deleteElementAlaram(final @Nonnull @PathVariable("id") UUID id, final @Nonnull @PathVariable("name") String name) {
+	public ResponseEntity<Void> deleteElementAlaram(final @NonNull @PathVariable("id") UUID id, final @NonNull @PathVariable("name") String name) {
 		alarmService.deleteElement(id, name);
 		return ResponseEntity.noContent().build();
 	}
 
-	@Nonnull
+	@NonNull
 	private static Alarm map(final AlarmDto alarm) {
 		final Alarm a = new Alarm();
 		a.setAggregates(alarm.getAggregates());

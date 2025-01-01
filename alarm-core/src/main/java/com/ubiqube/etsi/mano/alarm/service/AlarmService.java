@@ -33,7 +33,7 @@ import com.ubiqube.etsi.mano.alarm.repository.AlarmRepository;
 import com.ubiqube.etsi.mano.alarm.service.aggregate.AggregateService;
 import com.ubiqube.etsi.mano.alarm.service.transform.TransformService;
 
-import jakarta.annotation.Nonnull;
+import org.jspecify.annotations.NonNull;
 
 /**
  *
@@ -57,17 +57,17 @@ public class AlarmService {
 		return StreamSupport.stream(ite.spliterator(), false).toList();
 	}
 
-	public Alarm create(final @Nonnull Alarm subs) {
+	public Alarm create(final @NonNull Alarm subs) {
 		checkTransforms(subs.getTransforms());
 		checkAggregates(subs.getAggregates());
 		return alarmRepository.save(subs);
 	}
 
-	public void deleteById(final @Nonnull UUID id) {
+	public void deleteById(final @NonNull UUID id) {
 		alarmRepository.deleteById(id);
 	}
 
-	public Optional<Alarm> findById(final @Nonnull UUID id) {
+	public Optional<Alarm> findById(final @NonNull UUID id) {
 		return alarmRepository.findById(id);
 	}
 
@@ -85,7 +85,7 @@ public class AlarmService {
 		}
 	}
 
-	public void addElement(final @Nonnull UUID id, final AlarmElement alarmElement) {
+	public void addElement(final @NonNull UUID id, final AlarmElement alarmElement) {
 		final Alarm alarm = alarmRepository.findById(id).orElseThrow();
 		if (alarm.getMetrics().stream().anyMatch(x -> x.getLabel().equals(alarmElement.getMetric().getLabel()))) {
 			throw new AlarmException("Element already exist.");
@@ -95,7 +95,7 @@ public class AlarmService {
 		alarmRepository.save(alarm);
 	}
 
-	public void deleteElement(final @Nonnull UUID id, final String name) {
+	public void deleteElement(final @NonNull UUID id, final String name) {
 		final Alarm alarm = alarmRepository.findById(id).orElseThrow();
 		final List<Metrics> m = alarm.getMetrics().stream().filter(x -> x.getLabel().equals(name)).toList();
 		final List<Aggregates> a = alarm.getAggregates().stream().filter(x -> x.getName().equals(name)).toList();

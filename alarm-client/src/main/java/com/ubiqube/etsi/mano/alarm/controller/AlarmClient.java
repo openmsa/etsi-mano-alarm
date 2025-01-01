@@ -30,7 +30,7 @@ import org.springframework.web.service.annotation.PostExchange;
 import com.ubiqube.etsi.mano.alarm.entities.alarm.Alarm;
 import com.ubiqube.etsi.mano.alarm.entities.alarm.dto.AlarmDto;
 
-import jakarta.annotation.Nonnull;
+import org.jspecify.annotations.NonNull;
 import jakarta.validation.Valid;
 
 /**
@@ -45,12 +45,12 @@ public interface AlarmClient {
 	ResponseEntity<List<Alarm>> listAlarm();
 
 	@GetExchange("/{id}")
-	ResponseEntity<Alarm> findById(final @Nonnull @PathVariable("id") UUID id);
+	ResponseEntity<Alarm> findById(final @NonNull @PathVariable("id") UUID id);
 
 	@PostExchange
 	ResponseEntity<Alarm> createAlarm(final @RequestBody @Valid AlarmDto alarm);
 
 	@DeleteExchange("/{id}")
-	ResponseEntity<Void> deleteAlaram(final @Nonnull @PathVariable("id") UUID id);
+	ResponseEntity<Void> deleteAlaram(final @NonNull @PathVariable("id") UUID id);
 
 }

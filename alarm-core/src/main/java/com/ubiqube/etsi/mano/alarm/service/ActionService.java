@@ -19,6 +19,7 @@ package com.ubiqube.etsi.mano.alarm.service;
 import java.net.URI;
 import java.util.List;
 
+import org.jspecify.annotations.Nullable;
 import org.springframework.stereotype.Service;
 
 import com.ubiqube.etsi.mano.alarm.entities.AlarmSubscription;
@@ -30,8 +31,6 @@ import com.ubiqube.etsi.mano.service.auth.model.AuthentificationInformations;
 import com.ubiqube.etsi.mano.service.auth.model.OAuth2GrantType;
 import com.ubiqube.etsi.mano.service.auth.model.ServerConnection;
 import com.ubiqube.etsi.mano.service.rest.FluxRest;
-
-import jakarta.annotation.Nullable;
 
 /**
  * This service should be Async
@@ -67,7 +66,7 @@ public class ActionService {
 	}
 
 	@Nullable
-	private static AuthParamOauth2 map(@Nullable final com.ubiqube.etsi.mano.alarm.entities.AuthParamOauth2 authParamOauth2) {
+	private static AuthParamOauth2 map(final com.ubiqube.etsi.mano.alarm.entities.@Nullable AuthParamOauth2 authParamOauth2) {
 		if (null == authParamOauth2) {
 			return null;
 		}
@@ -84,7 +83,7 @@ public class ActionService {
 	}
 
 	@Nullable
-	private static AuthParamBasic map(@Nullable final com.ubiqube.etsi.mano.alarm.entities.AuthParamBasic authParamBasic) {
+	private static AuthParamBasic map(final com.ubiqube.etsi.mano.alarm.entities.@Nullable AuthParamBasic authParamBasic) {
 		if (null == authParamBasic) {
 			return null;
 		}

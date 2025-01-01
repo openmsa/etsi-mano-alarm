@@ -30,7 +30,7 @@ import org.springframework.jms.support.converter.MessageType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
-import jakarta.annotation.Nonnull;
+import org.jspecify.annotations.NonNull;
 import jakarta.jms.ConnectionFactory;
 
 /**
@@ -65,7 +65,7 @@ public class AlarmJmsConfiguration {
 
 	@Bean
 	@Primary
-	JmsTemplate queueJmsTemplate(final @Nonnull ConnectionFactory connFactory, final MessageConverter messageConverter) {
+	JmsTemplate queueJmsTemplate(final @NonNull ConnectionFactory connFactory, final MessageConverter messageConverter) {
 		final JmsTemplate jmsTemplate = new JmsTemplate(connFactory);
 		jmsTemplate.setPubSubDomain(true);
 		jmsTemplate.setMessageConverter(messageConverter);
