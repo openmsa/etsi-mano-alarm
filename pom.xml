@@ -14,6 +14,7 @@
 		<module>alarm-client</module>
 		<module>alarm-webapp</module>
 		<module>alarm-core</module>
+		<module>alarm-entities</module>
 	</modules>
 	<scm>
 		<developerConnection>scm:git:ssh://git@github.com/openmsa/etsi-mano-alarm.git</developerConnection>

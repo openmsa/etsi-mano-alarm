@@ -19,7 +19,6 @@ package com.ubiqube.etsi.mano.alarm.entities;
 import java.net.URI;
 import java.util.UUID;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -42,7 +41,6 @@ public class AlarmSubscription {
 
 	private AuthentificationInformations authentication;
 
-	@Schema(description = "Callback URL when alarm is triggered.")
 	private URI callbackUri;
 
 	private String remoteId;
