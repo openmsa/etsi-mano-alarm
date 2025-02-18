@@ -19,6 +19,7 @@ package com.ubiqube.etsi.mano.alarm.controller;
 import java.util.List;
 import java.util.UUID;
 
+import org.jspecify.annotations.NonNull;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,10 +28,8 @@ import org.springframework.web.service.annotation.GetExchange;
 import org.springframework.web.service.annotation.HttpExchange;
 import org.springframework.web.service.annotation.PostExchange;
 
-import com.ubiqube.etsi.mano.alarm.entities.alarm.Alarm;
 import com.ubiqube.etsi.mano.alarm.entities.alarm.dto.AlarmDto;
 
-import org.jspecify.annotations.NonNull;
 import jakarta.validation.Valid;
 
 /**
@@ -42,13 +41,13 @@ import jakarta.validation.Valid;
 public interface AlarmClient {
 
 	@GetExchange
-	ResponseEntity<List<Alarm>> listAlarm();
+	ResponseEntity<List<AlarmDto>> listAlarm();
 
 	@GetExchange("/{id}")
-	ResponseEntity<Alarm> findById(final @NonNull @PathVariable("id") UUID id);
+	ResponseEntity<AlarmDto> findById(final @NonNull @PathVariable("id") UUID id);
 
 	@PostExchange
-	ResponseEntity<Alarm> createAlarm(final @RequestBody @Valid AlarmDto alarm);
+	ResponseEntity<AlarmDto> createAlarm(final @RequestBody @Valid AlarmDto alarm);
 
 	@DeleteExchange("/{id}")
 	ResponseEntity<Void> deleteAlaram(final @NonNull @PathVariable("id") UUID id);

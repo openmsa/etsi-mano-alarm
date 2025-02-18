@@ -14,24 +14,28 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
-package com.ubiqube.etsi.mano.alarm.entities;
+package com.ubiqube.etsi.mano.alarm.service.mapper;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import java.util.List;
 
-import org.junit.jupiter.api.Test;
+import org.jspecify.annotations.Nullable;
+import org.mapstruct.Mapper;
+import org.springframework.stereotype.Component;
 
-/**
- *
- * @author Olivier Vignaud
- *
- */
-@SuppressWarnings("static-method")
-class AuthTypeTest {
+import com.ubiqube.etsi.mano.alarm.entities.alarm.Metrics;
+import com.ubiqube.etsi.mano.alarm.entities.alarm.dto.MetricsDto;
 
-	@Test
-	void test() {
-		final AuthTypeDto b = AuthTypeDto.BASIC;
-		assertNotNull(b);
+@Component
+@Mapper(componentModel = "spring")
+public interface MetricMapper {
+	@Nullable
+	Metrics map(MetricsDto metricsDto);
+
+	@Nullable
+	default List<Metrics> map(final List<MetricsDto> metrics) {
+		if (metrics == null) {
+			return null;
+		}
+		return metrics.stream().map(this::map).toList();
 	}
-
 }

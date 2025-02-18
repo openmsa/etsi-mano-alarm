@@ -14,34 +14,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
-package com.ubiqube.etsi.mano.alarm.entities.alarm.dto;
+package com.ubiqube.etsi.mano.alarm.service.mapper;
 
-import java.net.URI;
+import org.jspecify.annotations.Nullable;
+import org.mapstruct.Mapper;
+import org.springframework.stereotype.Component;
 
+import com.ubiqube.etsi.mano.alarm.entities.AuthentificationInformations;
 import com.ubiqube.etsi.mano.alarm.entities.AuthentificationInformationsDto;
 
-import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.validation.constraints.NotNull;
-import lombok.Getter;
-import lombok.Setter;
-
-/**
- *
- * @author Olivier Vignaud
- *
- */
-@Getter
-@Setter
-public class SubscriptionDto {
-	@Schema(description = "Authentication informations.")
-	@NotNull
-	private AuthentificationInformationsDto authentication;
-
-	@Schema(description = "Callback URL when alarm is triggered.")
-	@NotNull
-	private URI callbackUri;
-
-	@Schema(description = "External reference, used for tracking alarm triggering.")
-	private String remoteId;
-
+@Component
+@Mapper(componentModel = "spring")
+public interface AuthenticationMapper {
+	@Nullable
+	AuthentificationInformations map(AuthentificationInformationsDto o);
 }

@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.jspecify.annotations.NonNull;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -36,9 +37,12 @@ import com.ubiqube.etsi.mano.alarm.entities.alarm.Alarm;
 import com.ubiqube.etsi.mano.alarm.entities.alarm.dto.AlarmDto;
 import com.ubiqube.etsi.mano.alarm.entities.alarm.dto.SubscriptionDto;
 import com.ubiqube.etsi.mano.alarm.service.AlarmService;
+import com.ubiqube.etsi.mano.alarm.service.mapper.AggregatesMapper;
+import com.ubiqube.etsi.mano.alarm.service.mapper.AuthenticationMapper;
+import com.ubiqube.etsi.mano.alarm.service.mapper.MetricMapper;
+import com.ubiqube.etsi.mano.alarm.service.mapper.TransformMapper;
 
 import io.swagger.v3.oas.annotations.Operation;
-import org.jspecify.annotations.NonNull;
 import jakarta.validation.Valid;
 
 /**
@@ -51,9 +55,17 @@ import jakarta.validation.Valid;
 @Validated
 public class AlarmController {
 	private final AlarmService alarmService;
+	private final TransformMapper transformMapper;
+	private final MetricMapper metricMapper;
+	private final AuthenticationMapper authenticationMapper;
+	private final AggregatesMapper aggregatesMapper;
 
-	public AlarmController(final AlarmService alarmService) {
+	public AlarmController(final AlarmService alarmService, final TransformMapper transformMapper, final MetricMapper metricMapper, final AuthenticationMapper authenticationMapper, final AggregatesMapper aggregatesMapper) {
 		this.alarmService = alarmService;
+		this.transformMapper = transformMapper;
+		this.metricMapper = metricMapper;
+		this.authenticationMapper = authenticationMapper;
+		this.aggregatesMapper = aggregatesMapper;
 	}
 
 	@Operation(summary = "List all Alarms", description = "List all alarms.", tags = {})
@@ -103,19 +115,19 @@ public class AlarmController {
 	}
 
 	@NonNull
-	private static Alarm map(final AlarmDto alarm) {
+	private Alarm map(final AlarmDto alarm) {
 		final Alarm a = new Alarm();
-		a.setAggregates(alarm.getAggregates());
+		a.setAggregates(aggregatesMapper.map(alarm.getAggregates()));
 		a.setConditions(alarm.getConditions());
-		a.setMetrics(alarm.getMetrics());
-		a.setTransforms(alarm.getTransforms());
+		a.setMetrics(metricMapper.map(alarm.getMetrics()));
+		a.setTransforms(transformMapper.map(alarm.getTransforms()));
 		a.setSubscription(map(alarm.getSubscription()));
 		return a;
 	}
 
-	private static AlarmSubscription map(final SubscriptionDto subscription) {
+	private AlarmSubscription map(final SubscriptionDto subscription) {
 		final AlarmSubscription s = new AlarmSubscription();
-		s.setAuthentication(subscription.getAuthentication());
+		s.setAuthentication(authenticationMapper.map(subscription.getAuthentication()));
 		s.setCallbackUri(subscription.getCallbackUri());
 		s.setRemoteId(subscription.getRemoteId());
 		return s;

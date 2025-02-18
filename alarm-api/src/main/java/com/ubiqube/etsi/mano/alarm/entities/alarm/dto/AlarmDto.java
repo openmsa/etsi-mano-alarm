@@ -20,9 +20,6 @@ import java.time.OffsetDateTime;
 import java.util.List;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.ubiqube.etsi.mano.alarm.entities.alarm.Aggregates;
-import com.ubiqube.etsi.mano.alarm.entities.alarm.Metrics;
-import com.ubiqube.etsi.mano.alarm.entities.alarm.Transform;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -37,11 +34,11 @@ import lombok.Setter;
 @Getter
 @Setter
 public class AlarmDto {
-	private List<Metrics> metrics;
+	private List<MetricsDto> metrics;
 
-	private List<Transform> transforms;
+	private List<TransformDto> transforms;
 
-	private List<Aggregates> aggregates;
+	private List<AggregatesDto> aggregates;
 
 	@JsonDeserialize(converter = JsonConverter.class)
 	@NotNull

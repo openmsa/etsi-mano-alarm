@@ -23,7 +23,7 @@ import java.util.Map;
 import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ubiqube.etsi.mano.alarm.entities.alarm.Transform;
+import com.ubiqube.etsi.mano.alarm.entities.alarm.dto.TransformDto;
 
 @SuppressWarnings("static-method")
 class JsonTest {
@@ -31,7 +31,7 @@ class JsonTest {
 	@Test
 	void testName() throws Exception {
 		final ObjectMapper mapper = new ObjectMapper();
-		final Transform obj = new Transform();
+		final TransformDto obj = new TransformDto();
 		obj.setParameters(Map.of("val1", "k1", "k2", "v2"));
 		final String str = mapper.writeValueAsString(obj);
 		System.out.println(str);

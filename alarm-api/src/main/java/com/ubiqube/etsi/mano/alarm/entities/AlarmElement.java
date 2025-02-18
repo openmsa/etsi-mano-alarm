@@ -19,8 +19,8 @@ package com.ubiqube.etsi.mano.alarm.entities;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.ubiqube.etsi.mano.alarm.entities.alarm.Metrics;
-import com.ubiqube.etsi.mano.alarm.entities.alarm.Transform;
+import com.ubiqube.etsi.mano.alarm.entities.alarm.dto.MetricsDto;
+import com.ubiqube.etsi.mano.alarm.entities.alarm.dto.TransformDto;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -33,9 +33,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class AlarmElement {
-	private Metrics metric;
+	private MetricsDto metric;
 
-	private final List<Transform> transforms = new ArrayList<>();
+	private final List<TransformDto> transforms = new ArrayList<>();
 
 	private final List<String> aggregates = new ArrayList<>();
 }

@@ -24,6 +24,10 @@ import java.lang.reflect.InvocationTargetException;
 import org.junit.jupiter.api.Test;
 
 import com.ubiqube.etsi.mano.alarm.ModelTest;
+import com.ubiqube.etsi.mano.alarm.entities.alarm.dto.AggregatesDto;
+import com.ubiqube.etsi.mano.alarm.entities.alarm.dto.AlarmDto;
+import com.ubiqube.etsi.mano.alarm.entities.alarm.dto.MetricsDto;
+import com.ubiqube.etsi.mano.alarm.entities.alarm.dto.TransformDto;
 
 /**
  *
@@ -35,10 +39,10 @@ class ObjectTest {
 
 	@Test
 	void test() throws ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, IntrospectionException {
-		ModelTest.realHandle(Aggregates.class.getName());
-		ModelTest.realHandle(Alarm.class.getName());
-		ModelTest.realHandle(Metrics.class.getName());
-		ModelTest.realHandle(Transform.class.getName());
+		ModelTest.realHandle(AggregatesDto.class.getName());
+		ModelTest.realHandle(AlarmDto.class.getName());
+		ModelTest.realHandle(MetricsDto.class.getName());
+		ModelTest.realHandle(TransformDto.class.getName());
 		assertTrue(true);
 	}
 

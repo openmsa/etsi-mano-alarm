@@ -16,32 +16,21 @@
  */
 package com.ubiqube.etsi.mano.alarm.entities.alarm.dto;
 
-import java.net.URI;
+import java.util.UUID;
 
-import com.ubiqube.etsi.mano.alarm.entities.AuthentificationInformationsDto;
-
-import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-/**
- *
- * @author Olivier Vignaud
- *
- */
-@Getter
-@Setter
-public class SubscriptionDto {
-	@Schema(description = "Authentication informations.")
+@Data
+public class MetricsDto {
+	private UUID id;
+
 	@NotNull
-	private AuthentificationInformationsDto authentication;
+	private String label;
 
-	@Schema(description = "Callback URL when alarm is triggered.")
 	@NotNull
-	private URI callbackUri;
+	private String objectId;
 
-	@Schema(description = "External reference, used for tracking alarm triggering.")
-	private String remoteId;
-
+	@NotNull
+	private String key;
 }

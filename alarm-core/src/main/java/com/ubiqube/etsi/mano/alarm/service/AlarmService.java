@@ -21,6 +21,7 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.StreamSupport;
 
+import org.jspecify.annotations.NonNull;
 import org.springframework.stereotype.Service;
 
 import com.ubiqube.etsi.mano.alarm.AlarmException;
@@ -31,9 +32,9 @@ import com.ubiqube.etsi.mano.alarm.entities.alarm.Metrics;
 import com.ubiqube.etsi.mano.alarm.entities.alarm.Transform;
 import com.ubiqube.etsi.mano.alarm.repository.AlarmRepository;
 import com.ubiqube.etsi.mano.alarm.service.aggregate.AggregateService;
+import com.ubiqube.etsi.mano.alarm.service.mapper.MetricMapper;
+import com.ubiqube.etsi.mano.alarm.service.mapper.TransformMapper;
 import com.ubiqube.etsi.mano.alarm.service.transform.TransformService;
-
-import org.jspecify.annotations.NonNull;
 
 /**
  *
@@ -45,11 +46,15 @@ public class AlarmService {
 	private final AlarmRepository alarmRepository;
 	private final TransformService transformService;
 	private final AggregateService aggregateService;
+	private final MetricMapper metricMapper;
+	private final TransformMapper transformMapper;
 
-	public AlarmService(final AlarmRepository alarmRepository, final TransformService transformService, final AggregateService aggregateService) {
+	public AlarmService(final AlarmRepository alarmRepository, final TransformService transformService, final AggregateService aggregateService, final MetricMapper metricMapper, final TransformMapper transformMapper) {
 		this.alarmRepository = alarmRepository;
 		this.transformService = transformService;
 		this.aggregateService = aggregateService;
+		this.metricMapper = metricMapper;
+		this.transformMapper = transformMapper;
 	}
 
 	public List<Alarm> find() {
@@ -90,8 +95,9 @@ public class AlarmService {
 		if (alarm.getMetrics().stream().anyMatch(x -> x.getLabel().equals(alarmElement.getMetric().getLabel()))) {
 			throw new AlarmException("Element already exist.");
 		}
-		alarm.getMetrics().add(alarmElement.getMetric());
-		alarm.getTransforms().addAll(alarmElement.getTransforms());
+		alarm.getMetrics().add(metricMapper.map(alarmElement.getMetric()));
+		List<Transform> tmp = alarmElement.getTransforms().stream().map(transformMapper::map).toList();
+		alarm.getTransforms().addAll(tmp);
 		alarmRepository.save(alarm);
 	}
 

@@ -14,34 +14,23 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
-package com.ubiqube.etsi.mano.alarm.entities.alarm.dto;
+package com.ubiqube.etsi.mano.alarm.entities;
 
-import java.net.URI;
+import java.util.List;
 
-import com.ubiqube.etsi.mano.alarm.entities.AuthentificationInformationsDto;
-
-import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.validation.constraints.Size;
+import lombok.Data;
 
-/**
- *
- * @author Olivier Vignaud
- *
- */
-@Getter
-@Setter
-public class SubscriptionDto {
-	@Schema(description = "Authentication informations.")
+@Data
+public class AuthentificationInformationsDto {
 	@NotNull
-	private AuthentificationInformationsDto authentication;
+	@Size(min = 1)
+	private List<AuthTypeDto> authType;
 
-	@Schema(description = "Callback URL when alarm is triggered.")
-	@NotNull
-	private URI callbackUri;
+	private AuthParamBasicDto authParamBasic;
+	private AuthParamOauth2Dto authParamOauth2;
 
-	@Schema(description = "External reference, used for tracking alarm triggering.")
-	private String remoteId;
+	private String authTlsCert;
 
 }

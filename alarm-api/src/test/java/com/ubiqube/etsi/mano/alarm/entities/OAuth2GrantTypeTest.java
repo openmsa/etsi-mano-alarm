@@ -30,7 +30,7 @@ class OAuth2GrantTypeTest {
 
 	@Test
 	void test() {
-		final OAuth2GrantType e = OAuth2GrantType.CLIENT_CREDENTIAL;
+		final OAuth2GrantTypeDto e = OAuth2GrantTypeDto.CLIENT_CREDENTIAL;
 		assertNotNull(e);
 	}
 

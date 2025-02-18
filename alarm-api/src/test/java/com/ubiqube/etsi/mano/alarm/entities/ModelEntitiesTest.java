@@ -35,10 +35,10 @@ class ModelEntitiesTest {
 
 	@Test
 	void test() throws ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, IntrospectionException {
-		ModelTest.realHandle(AuthentificationInformations.class.getName());
-		ModelTest.realHandle(AuthParamBasic.class.getName());
-		ModelTest.realHandle(AuthParamOauth2.class.getName());
-		ModelTest.realHandle(AlarmSubscription.class.getName());
+		ModelTest.realHandle(AuthentificationInformationsDto.class.getName());
+		ModelTest.realHandle(AuthParamBasicDto.class.getName());
+		ModelTest.realHandle(AuthParamOauth2Dto.class.getName());
+		ModelTest.realHandle(AlarmSubscriptionDto.class.getName());
 		assertTrue(true);
 	}
 

@@ -16,22 +16,7 @@
  */
 package com.ubiqube.etsi.mano.alarm.entities;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
-import org.junit.jupiter.api.Test;
-
-/**
- *
- * @author Olivier Vignaud
- *
- */
-@SuppressWarnings("static-method")
-class AuthTypeTest {
-
-	@Test
-	void test() {
-		final AuthTypeDto b = AuthTypeDto.BASIC;
-		assertNotNull(b);
-	}
-
+public enum OAuth2GrantTypeDto {
+	PASSWORD,
+	CLIENT_CREDENTIAL;
 }

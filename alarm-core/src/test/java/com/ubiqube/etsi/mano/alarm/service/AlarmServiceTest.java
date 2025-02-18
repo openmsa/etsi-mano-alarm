@@ -28,6 +28,7 @@ import java.util.UUID;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mapstruct.factory.Mappers;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -36,8 +37,11 @@ import com.ubiqube.etsi.mano.alarm.entities.AlarmElement;
 import com.ubiqube.etsi.mano.alarm.entities.alarm.Aggregates;
 import com.ubiqube.etsi.mano.alarm.entities.alarm.Alarm;
 import com.ubiqube.etsi.mano.alarm.entities.alarm.Metrics;
+import com.ubiqube.etsi.mano.alarm.entities.alarm.dto.MetricsDto;
 import com.ubiqube.etsi.mano.alarm.repository.AlarmRepository;
 import com.ubiqube.etsi.mano.alarm.service.aggregate.AggregateService;
+import com.ubiqube.etsi.mano.alarm.service.mapper.MetricMapper;
+import com.ubiqube.etsi.mano.alarm.service.mapper.TransformMapper;
 import com.ubiqube.etsi.mano.alarm.service.transform.TransformService;
 
 @ExtendWith(MockitoExtension.class)
@@ -48,6 +52,8 @@ class AlarmServiceTest {
 	private TransformService transformService;
 	@Mock
 	private AggregateService aggregateService;
+	private final MetricMapper metricMapper = Mappers.getMapper(MetricMapper.class);
+	private final TransformMapper transformMapper = Mappers.getMapper(TransformMapper.class);
 
 	@Test
 	void testCreate() {
@@ -112,7 +118,9 @@ class AlarmServiceTest {
 		final AlarmElement element = new AlarmElement();
 		final Metrics metric = new Metrics();
 		metric.setLabel("label");
-		element.setMetric(metric);
+		final MetricsDto metricDto = new MetricsDto();
+		metricDto.setLabel("label");
+		element.setMetric(metricDto);
 		final Alarm alarm = new Alarm();
 		alarm.getMetrics().add(metric);
 		when(alarmRepository.findById(any())).thenReturn(Optional.of(alarm));
@@ -136,6 +144,6 @@ class AlarmServiceTest {
 	}
 
 	private AlarmService createSrv() {
-		return new AlarmService(alarmRepository, transformService, aggregateService);
+		return new AlarmService(alarmRepository, transformService, aggregateService, metricMapper, transformMapper);
 	}
 }
