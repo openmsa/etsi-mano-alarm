@@ -92,4 +92,18 @@ class AlarmControllerTest {
 		srv.listAlarm();
 		assertTrue(true);
 	}
+
+	@Test
+	void testAddElementAlaram() {
+		final AlarmController srv = createService();
+		srv.addElementAlaram(UUID.randomUUID(), null);
+		assertTrue(true);
+	}
+
+	@Test
+	void testDeleteElementAlaram() {
+		final AlarmController srv = createService();
+		srv.deleteElementAlaram(null, null);
+		assertTrue(true);
+	}
 }
