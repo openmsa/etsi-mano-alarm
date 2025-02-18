@@ -28,15 +28,9 @@ import com.ubiqube.etsi.mano.alarm.entities.alarm.dto.AggregatesDto;
 @Component
 @Mapper(componentModel = "spring")
 public interface AggregatesMapper {
-
+	@Nullable
 	Aggregates map(AggregatesDto aggregatesDto);
 
-	@Nullable
-	default List<Aggregates> map(final List<AggregatesDto> aggregates) {
-		if (aggregates == null) {
-			return null;
-		}
-		return aggregates.stream().map(this::map).toList();
-	}
+	List<Aggregates> map(final List<AggregatesDto> aggregates);
 
 }

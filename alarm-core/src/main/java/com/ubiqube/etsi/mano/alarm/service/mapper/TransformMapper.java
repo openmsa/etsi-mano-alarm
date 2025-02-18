@@ -31,12 +31,6 @@ public interface TransformMapper {
 	@Nullable
 	Transform map(TransformDto transformDto);
 
-	@Nullable
-	default List<Transform> map(final List<TransformDto> transforms) {
-		if (transforms == null) {
-			return null;
-		}
-		return transforms.stream().map(this::map).toList();
-	}
+	List<Transform> map(final List<TransformDto> transforms);
 
 }

@@ -31,11 +31,5 @@ public interface MetricMapper {
 	@Nullable
 	Metrics map(MetricsDto metricsDto);
 
-	@Nullable
-	default List<Metrics> map(final List<MetricsDto> metrics) {
-		if (metrics == null) {
-			return null;
-		}
-		return metrics.stream().map(this::map).toList();
-	}
+	List<Metrics> map(final List<MetricsDto> metrics);
 }
