@@ -1,0 +1,57 @@
+[
+  {
+    "name": "org.hibernate.persister.entity.JoinedSubclassEntityPersister",
+    "queryAllDeclaredMethods": true,
+    "condition": {
+      "typeReachable": "org.hibernate.jpa.HibernatePersistenceProvider"
+    },
+    "methods": [
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "org.hibernate.mapping.PersistentClass",
+          "org.hibernate.cache.spi.access.EntityDataAccess",
+          "org.hibernate.cache.spi.access.NaturalIdDataAccess",
+          "org.hibernate.persister.spi.PersisterCreationContext"
+        ]
+      },
+      {
+        "name": "<init>",
+        "parameterTypes": [
+          "org.hibernate.mapping.PersistentClass",
+          "org.hibernate.cache.spi.access.EntityDataAccess",
+          "org.hibernate.cache.spi.access.NaturalIdDataAccess",
+          "org.hibernate.metamodel.spi.RuntimeModelCreationContext"
+        ]
+      }
+    ]
+  },
+  {
+      "name": "org.hibernate.persister.entity.UnionSubclassEntityPersister",
+      "queryAllDeclaredMethods": true,
+      "condition": {
+        "typeReachable": "org.hibernate.jpa.HibernatePersistenceProvider"
+      },
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "org.hibernate.mapping.PersistentClass",
+            "org.hibernate.cache.spi.access.EntityDataAccess",
+            "org.hibernate.cache.spi.access.NaturalIdDataAccess",
+            "org.hibernate.persister.spi.PersisterCreationContext"
+          ]
+        },
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "org.hibernate.mapping.PersistentClass",
+            "org.hibernate.cache.spi.access.EntityDataAccess",
+            "org.hibernate.cache.spi.access.NaturalIdDataAccess",
+            "org.hibernate.metamodel.spi.RuntimeModelCreationContext"
+          ]
+        }
+      ]
+    }
+]
+

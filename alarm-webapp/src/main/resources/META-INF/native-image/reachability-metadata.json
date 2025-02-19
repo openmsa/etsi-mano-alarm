@@ -1,0 +1,10 @@
+{
+  "reflection": [
+    {
+      "type": "[Ljava.util.UUID;"
+    },
+    {
+      "type": "[Ljava.util.Calendar;"
+    }
+  ]
+}
