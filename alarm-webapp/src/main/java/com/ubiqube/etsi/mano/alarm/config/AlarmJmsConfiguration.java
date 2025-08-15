@@ -16,7 +16,8 @@
  */
 package com.ubiqube.etsi.mano.alarm.config;
 
-import org.springframework.boot.autoconfigure.jms.DefaultJmsListenerContainerFactoryConfigurer;
+import org.jspecify.annotations.NonNull;
+import org.springframework.boot.jms.autoconfigure.DefaultJmsListenerContainerFactoryConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -30,7 +31,6 @@ import org.springframework.jms.support.converter.MessageType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
-import org.jspecify.annotations.NonNull;
 import jakarta.jms.ConnectionFactory;
 
 /**
